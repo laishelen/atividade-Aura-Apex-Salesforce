@@ -1,0 +1,32 @@
+<aura:component 
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable"
+    access="global"
+    controller="BuscarApex">    
+
+    <!--Atributes-->
+    <!-- Cria uma ação manipuladora que é executada inicialmente -->    
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <aura:registerEvent name="passarValores" type="c:passarDado"/>
+
+    <!-- Cria um atributo que recebe uma Lista String, e Objeto -->    
+    <aura:attribute type="List" name="contas"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="pageReference" type="Object"/> 
+
+    <lightning:navigation aura:id="navService"/>
+
+    <!-- Botão que possui onclick que recebe a função buscarContas() -->
+    <lightning:button variant="brand" label="Atualizar" onclick="{! c.buscarContas }" />
+    <!-- 
+        Cria uma tabela de dados com ações que podem ser feitas em linhas.
+        Recebe os dados de (v.contas)
+    -->
+    <lightning:datatable
+                keyField="id"
+                data="{! v.contas }"
+                columns="{! v.columns }"
+                onrowaction="{! c.handleRowAction}"
+                hideCheckboxColumn="true"/>
+</aura:component>	
