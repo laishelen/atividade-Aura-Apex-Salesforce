@@ -1,0 +1,28 @@
+<aura:component 
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+    access="global"
+    controller="CriarApex">
+
+    <!--Atributes-->
+    <!-- Criando um atributo que recebe uma String, Inteiro, String -->
+    <aura:attribute name="nome" type="String" />
+    <aura:attribute name="telefone" type="Integer" />
+    <aura:attribute name="descricao" type="String" /> 
+    
+        <!-- Crio um paragrafo -->
+        <br/>  
+        <div class="slds-text-heading_medium"><p>Inserir um novo registro</p></div>
+        <br/>    
+        
+        <!-- Input para atribuir um valor a nome -->
+        <lightning:input type="text" value="{!v.nome}" label="Nome: " required="true" />
+        <!-- Input para atribuir um valor a telefone -->    
+        <lightning:input type="text" value="{!v.telefone}" label="Telefone: " required="true" />
+        <!-- Input para atribuir um valor a descrição -->    
+        <lightning:input type="text" value="{!v.descricao}" label="Descrição: " />
+
+        <!-- Botão que possui onclick que recebe a função chamarHelper() -->
+        <div class="slds-var-m-top_large">
+            <lightning:button variant="brand" label="Criar nova Conta" onclick="{! c.chamarHelper }" />
+        </div> 
+</aura:component>	
